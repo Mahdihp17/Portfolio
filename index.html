@@ -1,177 +1,549 @@
-
-<!DOCTYPE html>
-<html lang="fa">
+﻿<!DOCTYPE html>
+<html lang="فا" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>پورتفولیوی شخصی مهدی</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>پورتفولیوی مهدی</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
-
-    * {
-      box-sizing: border-box;
+    :root {
+      --primary-color: #6366f1;
+      --secondary-color: #9333ea;
+      --light-bg: rgba(255, 255, 255, 0.25);
+      --dark-bg: rgba(20, 20, 20, 0.5);
+      --glass-blur: 22px;
+      --text-light: #1e1e1e;
+      --text-dark: #f5f5f5;
+      --transition: all 0.4s ease;
+      --nav-height: 64px;
+      --max-width: 960px;
     }
-
-    body {
-      font-family: 'Vazirmatn', sans-serif;
-      background-color: #0f172a;
-      color: #f1f5f9;
+    * {
       margin: 0;
       padding: 0;
-      line-height: 1.6;
+      box-sizing: border-box;
     }
-
-    header {
-      text-align: center;
-      padding: 60px 20px;
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(270deg, #6366f1, #9333ea, #6366f1);
+      background-size: 400% 400%;
+      animation: bgMove 25s ease infinite;
+      color: var(--text-light);
+      transition: var(--transition);
+      overflow-x: hidden;
+      min-height: 100vh;
+      padding-top: var(--nav-height);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
-
-    header img {
-      width: 160px;
-      border-radius: 50%;
-      border: 4px solid #facc15;
-      margin-bottom: 20px;
+    body.dark-mode {
+      background: linear-gradient(270deg, #220055, #440088, #220055);
+      color: var(--text-dark);
     }
-
-    header h1 {
-      font-size: 2.5rem;
-      margin: 10px 0;
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-
-    header p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-
-    .button {
-      background-color: #facc15;
-      color: #0f172a;
-      padding: 12px 25px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: 0.3s;
-      display: inline-block;
-      margin-top: 15px;
-    }
-
-    .button:hover {
-      background-color: #fde047;
-    }
-
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 40px;
-      color: #facc15;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .gallery .item {
-      background-color: #1e293b;
-      border-radius: 10px;
-      overflow: hidden;
-      text-align: center;
-      padding-bottom: 10px;
-    }
-
-    .gallery img {
+    nav {
+      height: var(--nav-height);
       width: 100%;
-      height: 180px;
-      object-fit: cover;
+      max-width: var(--max-width);
+      padding: 0 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(28px);
+      position: fixed;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      border-radius: 0 0 28px 28px;
+      align-items: center;
+      user-select: none;
     }
-
-    .gallery p {
-      color: #fef9c3;
-      padding: 10px;
-      font-size: 1rem;
-    }
-
-    .about, .contact {
-      text-align: center;
-    }
-
-    .about p, .contact p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: auto;
-    }
-
-    .social-links a {
-      display: inline-block;
-      margin: 10px;
-      color: #facc15;
+    nav a {
+      color: white;
+      font-weight: 600;
       text-decoration: none;
-      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 14px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    nav a:hover,
+    nav a.active {
+      color: var(--secondary-color);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .mode-toggle {
+      position: fixed;
+      top: 14px;
+      left: 24px;
+      font-size: 20px;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      backdrop-filter: blur(24px);
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 4px 8px;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: background 0.3s ease;
+      z-index: 1100;
+    }
+    .mode-toggle:hover {
+      background: rgba(255,255,255,0.25);
     }
 
-    footer {
+    /* ===== اینجا منوی همبرگری موبایل اضافه شده ===== */
+    .hamburger-toggle {
+      display: none;
+      position: fixed;
+      top: 14px;
+      right: 24px;
+      font-size: 28px;
+      color: white;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(20px);
+      padding: 6px 12px;
+      border-radius: 12px;
+      z-index: 1100;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      user-select: none;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .hamburger-toggle:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: var(--nav-height);
+      right: 16px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px);
+      padding: 1rem;
+      border-radius: 20px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .mobile-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      white-space: nowrap;
+    }
+    .mobile-nav a:hover {
+      color: var(--secondary-color);
+    }
+    .mobile-nav.show {
+      display: flex;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hamburger-toggle {
+        display: block;
+      }
+      main {
+        padding: 1.5rem 1rem 1rem;
+        margin: 0;
+      }
+      .skills-wrapper {
+        padding: 2rem 1.5rem 1.5rem;
+      }
+      .skill-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 1.4rem;
+      }
+      .skill-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+        margin-top: 0;
+      }
+      .skill-text h3 {
+        font-size: 1.3rem;
+      }
+      .skill-text p {
+        font-size: 1rem;
+      }
+      .intro-section img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1rem;
+      }
+      .slider-wrapper {
+        max-height: 60vh;
+        padding: 1rem 1.2rem;
+      }
+      .slide-item {
+        margin-bottom: 1.2rem;
+      }
+    }
+
+    /* ===== پایان اضافه کردن منوی همبرگری موبایل ===== */
+
+    main {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 3rem 1.5rem 4rem;
+      margin-top: var(--nav-height);
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      user-select: none;
+    }
+    main > section > h2.section-title {
+      background: var(--light-bg);
+      backdrop-filter: saturate(180%) blur(var(--glass-blur));
+      border-radius: 20px;
+      padding: 0.8rem 1.8rem;
+      max-width: fit-content;
+      margin: 0 auto 2rem auto;
+      font-weight: 700;
+      color: var(--secondary-color);
+      user-select: none;
+      transition: background 0.4s ease;
+    }
+    body.dark-mode main > section > h2.section-title {
+      background: var(--dark-bg);
+      color: var(--text-dark);
+    }
+    .intro-section {
+      background: var(--light-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      border-radius: 28px;
+      padding: 2.5rem 3rem;
+      color: #111;
+      box-shadow: 0 14px 38px rgba(0,0,0,0.3);
+      transition: background 0.4s ease;
       text-align: center;
-      padding: 20px;
-      background-color: #1e293b;
-      color: #cbd5e1;
+      user-select: none;
+      margin-bottom: 2rem;
+    }
+    body.dark-mode .intro-section {
+      background: var(--dark-bg);
+      color: var(--text-dark);
+    }
+    .intro-section h1 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .intro-section p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 1.8rem auto;
+    }
+    .intro-section img {
+      width: 140px;
+      height: 140px;
+      border-radius: 24px;
+      object-fit: cover;
+      margin-bottom: 1.2rem;
+      border: 4px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 28px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
+      display: inline-block;
+    }
+    .skills-wrapper {
+      background: var(--light-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      border-radius: 24px;
+      box-shadow: 0 14px 38px rgba(0,0,0,0.3);
+      padding: 3rem 3rem 2rem;
+      color: #111;
+      transition: background 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    body.dark-mode .skills-wrapper {
+      background: var(--dark-bg);
+      color: var(--text-dark);
+    }
+    .skill-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.6rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      transition: border-color 0.3s ease;
+    }
+    body.dark-mode .skill-item {
+      border-color: rgba(255,255,255,0.15);
+    }
+    .skill-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--primary-color);
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+      margin-top: 4px;
+    }
+    body.dark-mode .skill-icon {
+      background: var(--secondary-color);
+    }
+    .skill-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    .skill-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      opacity: 0.9;
+      margin: 0;
+      color: inherit;
+    }
+    /* ===== اینجا بخش نمونه‌کارها به صورت اسلایدر ===== */
+    .slider-wrapper {
+      position: relative;
+      border-radius: 24px;
+      backdrop-filter: blur(var(--glass-blur));
+      background: var(--light-bg);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.3);
+      transition: background 0.4s ease;
+      padding: 1.5rem 2rem;
+      max-height: 70vh;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      user-select: none;
+    }
+    body.dark-mode .slider-wrapper {
+      background: var(--dark-bg);
+    }
+    .slide-item {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+      cursor: default;
+      margin-bottom: 1.8rem;
+      background: #111;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .slide-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+    }
+    .slide-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+      object-fit: contain;
+      background: #111;
+      transition: transform 0.4s ease;
+    }
+    /* بخش تماس با من */
+    .contact-card {
+      background: var(--light-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      border-radius: 28px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: white;
+      transition: background 0.4s ease, color 0.4s ease;
+      user-select: none;
+    }
+    body.dark-mode .contact-card {
+      background: var(--dark-bg);
+      color: var(--text-dark);
+    }
+    .contact-card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+      color: var(--secondary-color);
+    }
+    .contact-card a {
+      color: var(--primary-color);
+      text-decoration: none;
+      word-break: break-word;
+    }
+    .contact-card a:hover {
+      color: var(--secondary-color);
+    }
+    footer {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 1.8rem 1rem;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(28px);
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      color: white;
       font-size: 0.9rem;
+      user-select: none;
+      border-radius: 24px 24px 0 0;
+      margin-bottom: 1rem;
+    }
+    footer a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
+  <div class="mode-toggle" onclick="toggleMode()">🌓</div>
 
-<header>
-  <img src="myphoto.jpg" alt="عکس مهدی">
-  <h1>سلام! من مهدی هستم</h1>
-  <p>طراح و توسعه‌دهنده وب | عاشق ساخت رابط‌های کاربری زیبا و کاربردی</p>
-  <a href="#portfolio" class="button">دیدن نمونه‌کارها</a>
-</header>
+  <!-- دکمه همبرگری موبایل اضافه شده -->
+  <div class="hamburger-toggle" onclick="toggleHamburger()">☰</div>
 
-<section id="portfolio">
-  <h2>نمونه‌کارها</h2>
-  <div class="gallery">
-    <div class="item">
-      <img src="images/work1.jpg" alt="نمونه‌کار ۱">
-      <p>وبسایت شخصی با HTML/CSS</p>
-    </div>
-    <div class="item">
-      <img src="images/work2.jpg" alt="نمونه‌کار ۲">
-      <p>فروشگاه آنلاین با React</p>
-    </div>
-    <div class="item">
-      <img src="images/work3.jpg" alt="نمونه‌کار ۳">
-      <p>رابط کاربری اپلیکیشن موبایل</p>
-    </div>
+  <nav>
+    <a href="#intro" class="active">معرفی</a>
+    <a href="#skills">مهارت‌ها</a>
+    <a href="#portfolio">نمونه‌کارها</a>
+    <a href="#contact">تماس با من</a>
+  </nav>
+
+  <!-- منوی همبرگری موبایل -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#intro">معرفی</a>
+    <a href="#skills">مهارت‌ها</a>
+    <a href="#portfolio">نمونه‌کارها</a>
+    <a href="#contact">تماس با من</a>
+  </div>
+
+  <main>
+    <section id="intro" class="intro-section">
+      <img src="https://lexeem.ir/wp-content/uploads/2025/07/IMG_20241220_222109_927.webp" alt="تصویر طراح" />
+      <h1>سلام! من مهدی هستم، طراح رابط کاربری</h1>
+      <p>
+        با بیش از ۳ سال تجربه در طراحی رابط کاربری برای وب‌سایت‌ها و اپلیکیشن‌ها، تخصص من خلق تجربه‌هایی
+        منحصربه‌فرد، مدرن و کاربرمحور است که زیبایی را با کارایی ترکیب می‌کنند.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">مهارت‌ها</h2>
+      <div class="skills-wrapper">
+        <div class="skill-item">
+          <div class="skill-icon">💻</div>
+          <div class="skill-text">
+            <h3>طراحی با HTML, CSS, JS</h3>
+            <p>مسلط به طراحی رابط کاربری مدرن با HTML، CSS و JavaScript به صورت حرفه‌ای و ریسپانسیو.</p>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">🧩</div>
+          <div class="skill-text">
+            <h3>آشنایی کامل با وردپرس</h3>
+            <p>تسلط بر پنل مدیریت، قالب‌سازی، افزونه‌ها و سئو در محیط وردپرس.</p>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">✍️</div>
+          <div class="skill-text">
+            <h3>طراحی UI/UX</h3>
+            <p>طراحی رابط کاربری جذاب و بهبود تجربه کاربری به صورت تخصصی.</p>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">🌐</div>
+          <div class="skill-text">
+            <h3>سابقه همکاری با وبسایت‌ها</h3>
+            <p>فعالیت حرفه‌ای در وبسایت‌های Lexeem.ir و AsamServer.com.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <h2 class="section-title">نمونه‌کارها</h2>
+      <div class="slider-wrapper" tabindex="0" aria-label="نمونه کارها">
+        <div class="slide-item">
+          <img src="https://lexeem.ir/wp-content/uploads/2025/07/2025-07-05-08_15_43-آموزش-مکالمه-زبان-انگلیسی-آکادمی-لکسیم.png" alt="نمونه کار آموزش مکالمه زبان انگلیسی آکادمی لکسیـم" />
+        </div>
+        <div class="slide-item">
+          <img src="https://lexeem.ir/wp-content/uploads/2025/07/2025-07-05-08_14_39-آموزش-رایگان-زبان-انگلیسی-آکادمی-لکسیم.png" alt="نمونه کار آموزش رایگان زبان انگلیسی آکادمی لکسیـم" />
+        </div>
+        <div class="slide-item">
+          <img src="https://lexeem.ir/wp-content/uploads/2025/07/2025-07-05-08_14_20-صفحه-اصلی-آکادمی-لکسیم.png" alt="نمونه کار صفحه اصلی آکادمی لکسیـم" />
+        </div>
+      </div>
+    </section>
+
+<section id="contact">
+  <h2 class="section-title">تماس با من</h2>
+  <div class="contact-card">
+    <h2>تلفن</h2>
+    <a href="tel:+989962756512">09962756512</a>
+  </div>
+  <div class="contact-card">
+    <h2>اینستاگرام</h2>
+    <a href="https://instagram.com/Mahdi_hp17" target="_blank" rel="noopener noreferrer">Mahdi_hp17</a>
+  </div>
+  <div class="contact-card">
+    <h2>تلگرام</h2>
+    <a href="https://t.me/Mahdi78227" target="_blank" rel="noopener noreferrer">https://t.me/Mahdi78227</a>
+  </div>
+  <div class="contact-card">
+    <h2>ایمیل</h2>
+    <a href="mailto:mhoseinpoursteam458@gmail.com">mhoseinpoursteam458@gmail.com</a>
   </div>
 </section>
+  </main>
 
-<section class="about" id="about">
-  <h2>درباره من</h2>
-  <p>
-    من مهدی هستم، توسعه‌دهنده فرانت‌اند با تجربه در طراحی رابط‌های کاربری مدرن، واکنش‌گرا و بهینه برای تجربه کاربری بالا. با علاقه به طراحی و عشق به کدنویسی وارد دنیای وب شدم.
-  </p>
-</section>
+  <footer>
+    طراحی و توسعه توسط مهدی | <a href="mailto:mhoseinpoursteam458@gmail.com">ایمیل</a><br />
+    © 2025 تمام حقوق محفوظ است
+  </footer>
 
-<section class="contact" id="contact">
-  <h2>تماس با من</h2>
-  <p>برای همکاری یا هرگونه سوال خوشحال می‌شم در ارتباط باشیم.</p>
-  <div class="social-links">
-    <a href="#">ایمیل: mehdi@example.com</a> |
-    <a href="#">GitHub</a> |
-    <a href="#">LinkedIn</a>
-  </div>
-</section>
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+    // ناوبری ساده برای موبایل یا تغییر حالت لینک فعال
+    const navLinks = document.querySelectorAll("nav a");
+    navLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        navLinks.forEach(l => l.classList.remove("active"));
+        e.target.classList.add("active");
+      });
+    });
 
-<footer>
-  © 2025 مهدی. تمامی حقوق محفوظ است.
-</footer>
+    // کد منوی همبرگری موبایل
+    const hamburgerToggle = document.querySelector(".hamburger-toggle");
+    const mobileNav = document.getElementById("mobileNav");
 
+    function toggleHamburger() {
+      mobileNav.classList.toggle("show");
+    }
+
+    // بستن منوی موبایل هنگام کلیک روی لینک‌ها
+    const mobileNavLinks = mobileNav.querySelectorAll("a");
+    mobileNavLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("show");
+      });
+    });
+  </script>
 </body>
 </html>
