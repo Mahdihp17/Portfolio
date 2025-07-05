@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>پورتفولیوی شخصی مهدی</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #0f172a;
+      color: #f1f5f9;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    header img {
+      width: 160px;
+      border-radius: 50%;
+      border: 4px solid #facc15;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 10px 0;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      background-color: #facc15;
+      color: #0f172a;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    .button:hover {
+      background-color: #fde047;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #facc15;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery .item {
+      background-color: #1e293b;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .gallery p {
+      color: #fef9c3;
+      padding: 10px;
+      font-size: 1rem;
+    }
+
+    .about, .contact {
+      text-align: center;
+    }
+
+    .about p, .contact p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 10px;
+      color: #facc15;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1e293b;
+      color: #cbd5e1;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="myphoto.jpg" alt="عکس مهدی">
+  <h1>سلام! من مهدی هستم</h1>
+  <p>طراح و توسعه‌دهنده وب | عاشق ساخت رابط‌های کاربری زیبا و کاربردی</p>
+  <a href="#portfolio" class="button">دیدن نمونه‌کارها</a>
+</header>
+
+<section id="portfolio">
+  <h2>نمونه‌کارها</h2>
+  <div class="gallery">
+    <div class="item">
+      <img src="images/work1.jpg" alt="نمونه‌کار ۱">
+      <p>وبسایت شخصی با HTML/CSS</p>
+    </div>
+    <div class="item">
+      <img src="images/work2.jpg" alt="نمونه‌کار ۲">
+      <p>فروشگاه آنلاین با React</p>
+    </div>
+    <div class="item">
+      <img src="images/work3.jpg" alt="نمونه‌کار ۳">
+      <p>رابط کاربری اپلیکیشن موبایل</p>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <h2>درباره من</h2>
+  <p>
+    من مهدی هستم، توسعه‌دهنده فرانت‌اند با تجربه در طراحی رابط‌های کاربری مدرن، واکنش‌گرا و بهینه برای تجربه کاربری بالا. با علاقه به طراحی و عشق به کدنویسی وارد دنیای وب شدم.
+  </p>
+</section>
+
+<section class="contact" id="contact">
+  <h2>تماس با من</h2>
+  <p>برای همکاری یا هرگونه سوال خوشحال می‌شم در ارتباط باشیم.</p>
+  <div class="social-links">
+    <a href="#">ایمیل: mehdi@example.com</a> |
+    <a href="#">GitHub</a> |
+    <a href="#">LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  © 2025 مهدی. تمامی حقوق محفوظ است.
+</footer>
+
+</body>
+</html>
