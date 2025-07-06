@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>تماس با من | پورتفولیوی مهدی</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #6366f1;
+      --secondary-color: #9333ea;
+      --light-bg: rgba(255 255 255 / 0.15);
+      --dark-bg: rgba(20 20 20 / 0.6);
+      --glass-blur: 24px;
+      --text-light: #1e1e1e;
+      --text-dark: #f5f5f5;
+      --transition: all 0.4s ease;
+      --nav-height: 64px;
+    }
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(270deg, #6366f1, #9333ea, #6366f1);
+      background-size: 400% 400%;
+      animation: bgMove 25s ease infinite;
+      color: var(--text-light);
+      min-height: 100vh;
+      padding-top: var(--nav-height);
+      display: flex;
+      flex-direction: column;
+    }
+    body.dark-mode {
+      background: linear-gradient(270deg, #220055, #440088, #220055);
+      color: var(--text-dark);
+    }
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .mode-toggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1001;
+      user-select: none;
+    }
+    nav {
+      height: var(--nav-height);
+      width: 100%;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background: rgba(255 255 255 / 0.12);
+      backdrop-filter: blur(28px);
+      position: fixed;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1px solid rgba(255 255 255 / 0.15);
+      box-shadow: 0 8px 24px rgba(0 0 0 / 0.18);
+      border-radius: 0 0 28px 28px;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 14px;
+    }
+    nav a:hover, nav a.active {
+      color: var(--secondary-color);
+      background: rgba(255 255 255 / 0.15);
+    }
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 3rem 1rem 2rem;
+    }
+    .contact-card {
+      width: 100%;
+      max-width: 520px;
+      padding: 2rem;
+      background: var(--light-bg);
+      backdrop-filter: saturate(180%) blur(var(--glass-blur));
+      border-radius: 28px;
+      box-shadow: 0 12px 48px rgba(0 0 0 / 0.18);
+      text-align: center;
+      color: white;
+      transition: var(--transition);
+    }
+    body.dark-mode .contact-card {
+      background: var(--dark-bg);
+      color: var(--text-dark);
+    }
+    .contact-card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--secondary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .contact-card h2 i {
+      font-size: 1.3rem;
+      color: var(--primary-color);
+    }
+    .contact-card a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 1.05rem;
+      word-break: break-word;
+    }
+    .contact-card a:hover {
+      color: var(--secondary-color);
+    }
+    footer {
+      width: 100%;
+      padding: 2rem;
+      background: rgba(255 255 255 / 0.05);
+      backdrop-filter: blur(20px);
+      text-align: center;
+      border-top: 1px solid rgba(255 255 255 / 0.1);
+      color: white;
+      font-size: 0.95rem;
+      box-shadow: 0 -3px 20px rgba(0 0 0 / 0.3);
+      border-radius: 24px 24px 0 0;
+      margin-top: 2rem;
+    }
+    footer a {
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        height: 100vh;
+        width: 220px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        padding-top: 4rem;
+        gap: 1.5rem;
+        border-radius: 0 0 0 28px;
+      }
+      nav.active {
+        transform: translateX(0);
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="mode-toggle" onclick="document.body.classList.toggle('dark-mode')">🌓 حالت روز/شب</div>
+  <div class="menu-toggle" id="menu-toggle">☰</div>
+  <nav>
+    <a href="index.html">خانه</a>
+    <a href="skills.html">مهارت‌ها</a>
+    <a href="projects.html">نمونه‌کارها</a>
+    <a href="contact.html" class="active">تماس با من</a>
+  </nav>
+  <main>
+    <div class="contact-card">
+      <h2><i class="fas fa-envelope"></i> ایمیل</h2>
+      <a href="mailto:mhoseinpoursteam458@gmail.com">mhoseinpoursteam458@gmail.com</a>
+    </div>
+    <div class="contact-card">
+      <h2><i class="fas fa-phone"></i> شماره تماس</h2>
+      <a href="tel:+989962756512">+989962756512</a>
+    </div>
+    <div class="contact-card">
+      <h2><i class="fab fa-telegram"></i> تلگرام</h2>
+      <a href="https://t.me/Mahdi78227" target="_blank" rel="noopener">https://t.me/Mahdi78227</a>
+    </div>
+    <div class="contact-card">
+      <h2><i class="fab fa-instagram"></i> اینستاگرام</h2>
+      <a href="https://instagram.com/mahdi_hp17" target="_blank" rel="noopener">@mahdi_hp17</a>
+    </div>
+  </main>
+  <footer>
+    طراحی و توسعه توسط مهدی | <a href="mailto:mhoseinpoursteam458@gmail.com">ایمیل</a><br>
+    © 2025 تمام حقوق محفوظ است
+  </footer>
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.querySelector('nav');
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (nav.classList.contains('active')) {
+          nav.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
